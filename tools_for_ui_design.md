@@ -95,10 +95,16 @@
 + **Trends:** Deklarative UI, Cross-Platform, Design-Systeme, Kollaboration.
 + **Empfehlungen (Kurz):**
 
-    - **Design:** Figma (Kollaboration, Web)  
-    - **Web:** React/Vue (Flexibel, Community)  
-    - **Mobile:** Native (Performance) oder Flutter (Cross-Platform)  
-    - **Desktop:** Electron (Web-Tech) oder Qt (Performance)  
+    - **Design:** Figma (Kollaboration, Web)
+    - **Web:** React/Vue (Flexibel, Community)
+    - **Mobile:** Native (Performance) oder Flutter (Cross-Platform)
+    - **Desktop:** Electron (Web-Tech) oder Qt (Performance)
+
++ Wichtige externe Bibliotheken:
+
+   - OpenCV (für Auswertung und Debugging mit Kamerabildern)
+   - NumPy
+   - Matplotlib
 
 ---
 
