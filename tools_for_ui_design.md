@@ -1,6 +1,6 @@
-[![LiaScript](https://raw.githubusercontent.com/LiaScript/LiaScript/master/badges/course.svg)](https://liascript.github.io/course/?[https://github.com/smn-hrtzsch/MMK/edit/main/tools_for_ui_design.md](https://github.com/smn-hrtzsch/MMK/blob/main/tools_for_ui_design.md))
+[![LiaScript](https://raw.githubusercontent.com/LiaScript/LiaScript/master/badges/course.svg)](https://liascript.github.io/course/?https://raw.githubusercontent.com/smn-hrtzsch/MMK/refs/heads/main/tools_for_ui_design.md?token=GHSAT0AAAAAADCU7HNNN7LZRXGNLOS25UTU2ALKYNQ)
 
-# Exposé-Vortrag: UI Design Frameworks & Tools
+# Mensch-Maschine-Kommunikation: UI Design Frameworks & Tools
 
 | Parameter             | Kursinformationen                                                         |
 | ----------------------| --------------------------------------------------------------------------|
