@@ -32,7 +32,7 @@
 * Stärkt die Markenidentität
 * Fördert die Akzeptanz des Produkts
 
-![Bild von UI Design Konzept](https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80)
+![Bild von UI Design Konzept](https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80|height=150)
 
 ---
 
@@ -44,7 +44,7 @@ Diese Werkzeuge helfen Designern, die visuellen Elemente einer Benutzeroberfläc
 
 ### 2.1 Figma
 
-![Logo von Figma](https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1667px-Figma-logo.svg.png)
+![Logo von Figma](https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1667px-Figma-logo.svg.png|height=150)
 
 * **Art:** Kollaboratives Interface-Design-Tool
 * **Kosten:** Kostenloser Plan verfügbar, kostenpflichtige Pläne für Teams und Organisationen ([Figma Pricing](https://www.figma.com/pricing/))
@@ -65,7 +65,7 @@ Diese Werkzeuge helfen Designern, die visuellen Elemente einer Benutzeroberfläc
 
 ### 2.2 Sketch
 
-![Logo von Sketch](https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Sketch_Logo.svg/1024px-Sketch_Logo.svg.png)
+![Logo von Sketch](https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Sketch_Logo.svg/1024px-Sketch_Logo.svg.png|height=150)
 
 * **Art:** Vektorbasiertes UI/UX-Design-Tool
 * **Kosten:** Kostenpflichtig (Abonnement-Modell) ([Sketch Pricing](https://www.sketch.com/pricing/))
@@ -85,7 +85,7 @@ Diese Werkzeuge helfen Designern, die visuellen Elemente einer Benutzeroberfläc
 
 ### 2.3 Adobe XD
 
-![Logo von Adobe XD](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Adobe_XD_CC_icon.svg/1024px-Adobe_XD_CC_icon.svg.png)
+![Logo von Adobe XD](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Adobe_XD_CC_icon.svg/1024px-Adobe_XD_CC_icon.svg.png|height=150)
 
 * **Art:** UI/UX-Design und Prototyping-Tool
 * **Kosten:** Kostenloser Starter-Plan, Teil der Adobe Creative Cloud (kostenpflichtig) ([Adobe XD Plans](https://www.adobe.com/products/xd/plans.html)) - *Hinweis: Adobe hat die Weiterentwicklung von XD weitgehend eingestellt.*
@@ -111,7 +111,7 @@ Diese Frameworks bieten wiederverwendbare Komponenten und Strukturen zur effizie
 
 ### 3.1 React
 
-![Logo von React](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png)
+![Logo von React](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png|height=150)
 
 * **Art:** JavaScript-Bibliothek zur Erstellung von Benutzeroberflächen
 * **Entwickler:** Meta (Facebook)
@@ -136,7 +136,7 @@ Diese Frameworks bieten wiederverwendbare Komponenten und Strukturen zur effizie
 
 ### 3.2 Angular
 
-![Logo von Angular](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1024px-Angular_full_color_logo.svg.png)
+![Logo von Angular](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1024px-Angular_full_color_logo.svg.png|height=150)
 
 * **Art:** Umfassendes Web-Anwendungsframework
 * **Entwickler:** Google
@@ -161,7 +161,7 @@ Diese Frameworks bieten wiederverwendbare Komponenten und Strukturen zur effizie
 
 ### 3.3 Vue.js
 
-![Logo von Vue.js](https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1024px-Vue.js_Logo_2.svg.png)
+![Logo von Vue.js](https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1024px-Vue.js_Logo_2.svg.png|height=150)
 
 * **Art:** Progressives JavaScript-Framework
 * **Entwickler:** Evan You & Community
@@ -202,7 +202,7 @@ Werkzeuge zur Erstellung von Benutzeroberflächen für iOS und Android.
     * **Nachteile:** Nur für Android.
     * **Quelle:** [Android Developers - Jetpack Compose](https://developer.android.com/jetpack/compose)
 
-![Logos von Swift und Kotlin](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Swift_logo.svg/1024px-Swift_logo.svg.png | width=100) ![Logo von Kotlin](https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Kotlin_Icon.png/600px-Kotlin_Icon.png | width=100)
+![Logos von Swift und Kotlin](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Swift_logo.svg/1024px-Swift_logo.svg.png | width=100) ![Logo von Kotlin](https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Kotlin_Icon.png/600px-Kotlin_Icon.png | width=50)
 
 * **Kosten:** Entwicklungstools (Xcode, Android Studio) sind kostenlos.
 * **Plattform:** Jeweils spezifisch (iOS oder Android)
@@ -214,7 +214,7 @@ Werkzeuge zur Erstellung von Benutzeroberflächen für iOS und Android.
 
 ### 4.2 Cross-Platform: React Native
 
-![Logo von React Native](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png) * **Art:** Framework zur Erstellung nativer Apps mit React
+![Logo von React Native](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png|height=150) * **Art:** Framework zur Erstellung nativer Apps mit React
 
 * **Entwickler:** Meta (Facebook)
 * **Kosten:** Frei verfügbar (Open Source, MIT-Lizenz)
@@ -268,7 +268,7 @@ Werkzeuge zur Erstellung von Benutzeroberflächen für Desktop-Betriebssysteme.
 
 ### 5.1 Electron
 
-![Logo von Electron](https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Electron_Software_Framework_Logo.svg/1024px-Electron_Software_Framework_Logo.svg.png)
+![Logo von Electron](https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Electron_Software_Framework_Logo.svg/1024px-Electron_Software_Framework_Logo.svg.png|height=150)
 
 * **Art:** Framework zur Erstellung von Desktop-Anwendungen mit Web-Technologien (HTML, CSS, JavaScript)
 * **Entwickler:** GitHub (Teil von Microsoft)
@@ -291,7 +291,7 @@ Werkzeuge zur Erstellung von Benutzeroberflächen für Desktop-Betriebssysteme.
 
 ### 5.2 Qt (mit QML)
 
-![Logo von Qt](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Qt_logo_2016.svg/640px-Qt_logo_2016.svg.png)
+![Logo von Qt](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Qt_logo_2016.svg/640px-Qt_logo_2016.svg.png|height=150)
 
 * **Art:** Umfassendes Cross-Platform Anwendungsframework (nicht nur UI)
 * **Entwickler:** The Qt Company & Qt Project
