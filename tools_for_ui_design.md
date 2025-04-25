@@ -93,14 +93,11 @@
 
 + **Tool-Wahl:** Hängt stark vom Projekt, Team, Budget und Zielplattform ab.
 + **Trends:** Deklarative UI, Cross-Platform, Design-Systeme, Kollaboration.
-+ **Empfehlungen (Kurz):**
++ **Empfehlungen:**
 
     - **Design**: Figma (Kollaboration, Web)
-
     - **Web**: React/Vue (Flexibel, Community)
-
     - **Mobile**: Native (Performance) oder Flutter (Cross-Platform)
-
     - **Desktop**: Electron (Web-Tech) oder Qt (Performance)
 
 ---
