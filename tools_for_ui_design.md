@@ -1,4 +1,4 @@
-[![LiaScript](https://raw.githubusercontent.com/LiaScript/LiaScript/master/badges/course.svg)](https://raw.githubusercontent.com/smn-hrtzsch/MMK/refs/heads/main/tools_for_ui_design.md)
+[![LiaScript](https://raw.githubusercontent.com/LiaScript/LiaScript/master/badges/course.svg)](https://liascript.github.io/course/?https://raw.githubusercontent.com/smn-hrtzsch/MMK/refs/heads/main/tools_for_ui_design.md)
 
 # Mensch-Maschine-Kommunikation: UI Design Frameworks & Tools (Kurzversion)
 
