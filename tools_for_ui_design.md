@@ -1,4 +1,4 @@
-[![LiaScript](https://raw.githubusercontent.com/LiaScript/LiaScript/master/badges/course.svg)](https://liascript.github.io/course/?https://github.com/smn-hrtzsch/MMK/blob/main/tools_for_ui_design.md)
+[![LiaScript](https://raw.githubusercontent.com/LiaScript/LiaScript/master/badges/course.svg)](https://github.com/smn-hrtzsch/MMK/edit/main/tools_for_ui_design.md)
 
 # Exposé-Vortrag: UI Design Frameworks & Tools
 
