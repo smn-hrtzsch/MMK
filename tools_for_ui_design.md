@@ -21,7 +21,9 @@
 ## 1. Einleitung: Was ist UI-Design?
 
 **User Interface (UI) Design:** Gestaltung von Benutzeroberflächen für Software & Maschinen.  
+
 **Ziel:** Einfache, effiziente & intuitive Interaktion.  
+
 **Wichtigkeit:** Benutzerzufriedenheit, Effizienz, Markenidentität.
 
 <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Bild von UI Design Konzept" width="400">
