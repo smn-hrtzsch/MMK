@@ -20,9 +20,9 @@
 
 ## 1. Einleitung: Was ist UI-Design?
 
-**User Interface (UI) Design:** Gestaltung von Benutzeroberflächen für Software & Maschinen.  
+**User Interface (UI) Design:** Gestaltung von Benutzeroberflächen für Software & Maschinen.
 
-**Ziel:** Einfache, effiziente & intuitive Interaktion.  
+**Ziel:** Einfache, effiziente & intuitive Interaktion.
 
 **Wichtigkeit:** Benutzerzufriedenheit, Effizienz, Markenidentität.
 
