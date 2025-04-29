@@ -43,7 +43,7 @@
 + **Alternativen:** Sketch (nur macOS, kostenpflichtig), Adobe XD (Entwicklung eingestellt).
 + **Beispiel eines Flussdiagramms:**
 
-    <img src="/Img/figma_example.png" alt="Figma Beispiel Kellner Interaktion" width="300">
+    <img src="/Img/figma_example.png" alt="Figma Beispiel Kellner Interaktion" width="500">
 
 ---
 
