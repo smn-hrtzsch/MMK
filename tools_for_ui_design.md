@@ -1,6 +1,6 @@
 [![LiaScript](https://raw.githubusercontent.com/LiaScript/LiaScript/master/badges/course.svg)](https://liascript.github.io/course/?https://raw.githubusercontent.com/smn-hrtzsch/MMK/refs/heads/main/tools_for_ui_design.md)
 
-# Mensch-Maschine-Kommunikation: UI Design Frameworks & Tools
+# MMK: Frameworks und Tools für UI Design
 
 | Parameter             | Kursinformationen                                                         |
 | ----------------------| --------------------------------------------------------------------------|
@@ -26,7 +26,7 @@
 
 **Wichtigkeit:** Benutzerzufriedenheit, Effizienz, Markenidentität.
 
-<img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Bild von UI Design Konzept" width="400">
+<img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Bild von UI Design Konzept" width="600">
 
 ---
 
@@ -40,6 +40,9 @@
 + **Vorteile:** Echtzeit-Kollaboration, Plattformunabhängig, viele Plugins, gutes Prototyping.
 + **Nachteile:** Internet nötig, kann bei großen Dateien langsam werden.
 + **Alternativen:** Sketch (nur macOS, kostenpflichtig), Adobe XD (Entwicklung eingestellt).
++ **Beispiel eines Flussdiagramms:**
+
+    ![alt text](/Img/image.png)
 
 ---
 
@@ -55,8 +58,6 @@
 + **Nachteile:** Benötigt oft Zusatz-Tools (Routing etc.), Lernkurve.
 + **Alternativen:** Angular (Umfassendes Framework, steilere Lernkurve), Vue.js (Einsteigerfreundlich, kleineres Ökosystem).
 
-+ **Quelle:** [React Website](https://react.dev/)
-
 ---
 
 ## 4. Mobile UI Framework: Flutter
@@ -70,8 +71,6 @@
 + **Vorteile:** Sehr gute Performance, schnelle Entwicklung (Hot Reload), konsistentes UI, umfangreiche Widgets.
 + **Nachteile:** Größere App-Größe, Dart weniger verbreitet.
 + **Alternativen:** Native Entwicklung (SwiftUI/Jetpack Compose - Beste Performance/Integration, aber doppelter Code), React Native (Nutzt native Widgets, JavaScript).
-
-+ **Quelle:** [Flutter Website](https://flutter.dev/)
 
 ---
 
@@ -87,8 +86,6 @@
 + **Nachteile:** Hoher Ressourcenverbrauch, große Installationsdateien.
 + **Alternativen:** Qt (Sehr performant, C++/QML, komplexere Lizenz).
 
-+ **Quelle:** [Electron Website](https://www.electronjs.org/)
-
 ---
 
 ## 6. Fazit
@@ -101,6 +98,16 @@
   + **Web**: React/Vue (Flexibel, Community)
   + **Mobile**: Native (Performance) oder Flutter (Cross-Platform)
   + **Desktop**: Electron (Web-Tech) oder Qt (Performance)
+
++ **Quellen**:
+
+  + [Coursera Blog-Artikel](https://www.coursera.org/de-DE/articles/ui-design)
+  + [Figma Website](https://figma.com)
+  + [React Website](https://react.dev/)
+  + [Flutter Website](https://flutter.dev/)
+  + [Electron Website](https://www.electronjs.org/)
+
+  *Alle Quellen wurden zuletzt am 29.04.2025 um 12 Uhr auf ihre Aktualität überprüft.*
 
 ---
 
