@@ -37,6 +37,7 @@
 + **Art:** Kollaboratives Design-Tool (Webbasiert)
 + **Kosten:** Freemium (Kostenloser Plan + Bezahlpläne)
 + **Plattform:** Web, Windows, macOS
++ **Erlernbarkeit:** Einfach zu erlernen, intuitive Benutzeroberfläche
 + **Vorteile:** Echtzeit-Kollaboration, Plattformunabhängig, viele Plugins, gutes Prototyping.
 + **Nachteile:** Internet nötig, kann bei großen Dateien langsam werden.
 + **Alternativen:** Sketch (nur macOS, kostenpflichtig), Adobe XD (Entwicklung eingestellt).
@@ -50,6 +51,7 @@
 + **Art:** JavaScript-Bibliothek (Meta/Facebook)
 + **Kosten:** Open Source (Frei)
 + **Plattform:** Web
++ **Erlernbarkeit:** Mittelschwer, Lernkurve steil für Anfänger
 + **Nutzung:** JavaScript/JSX, TypeScript
 + **Vorteile:** Komponenten, große Community, Performance (Virtual DOM), Flexibel.
 + **Nachteile:** Benötigt oft Zusatz-Tools (Routing etc.), Lernkurve.
@@ -66,6 +68,7 @@
 + **Art:** Cross-Platform UI-Toolkit (Google)
 + **Kosten:** Open Source (Frei)
 + **Plattform:** iOS, Android, Web, Desktop
++ **Erlernbarkeit:** Mittel, Dart ist leicht zu lernen
 + **Nutzung:** Dart
 + **Vorteile:** Sehr gute Performance, schnelle Entwicklung (Hot Reload), konsistentes UI, umfangreiche Widgets.
 + **Nachteile:** Größere App-Größe, Dart weniger verbreitet.
@@ -82,6 +85,7 @@
 + **Art:** Framework für Desktop-Apps mit Web-Technologien (GitHub/Microsoft)
 + **Kosten:** Open Source (Frei)
 + **Plattform:** Windows, macOS, Linux
++ **Erlernbarkeit:** Mittel bis schwer, Performance-Optimierung und Desktop-spezifische Features können komplex sein
 + **Nutzung:** HTML, CSS, JavaScript
 + **Vorteile:** Nutzung bekannter Web-Tech, Cross-Platform, große Community (VS Code, Slack etc.).
 + **Nachteile:** Hoher Ressourcenverbrauch, große Installationsdateien.
