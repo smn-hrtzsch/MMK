@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROBIMO Datenportal - TUBAF Prototyp v5</title>
+    <title>ROBIMO Datenportal - TUBAF Prototyp v7</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -86,9 +86,14 @@
         .filter-group label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--grau); }
         .filter-group select, .filter-group input[type="date"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Arial', sans-serif; }
         
-        /* CSS für die wiederhergestellten Filter */
         .parameter-checkboxes label { display: flex; align-items: center; margin-bottom: 8px; font-weight: normal; }
         .parameter-checkboxes input { margin-right: 10px; accent-color: var(--uniblau); }
+        
+        /* --- Stile für Wassertiefe-Slider --- */
+        .depth-slider-container { position: relative; }
+        .slider-labels { display: flex; justify-content: space-between; font-size: 0.85em; color: var(--grau); margin-top: 5px; }
+        #current-depth-value { font-weight: bold; color: var(--uniblau); text-align: center; display: block; margin-top: 8px; font-size: 1.1em; }
+
         .toggle-switch { display: flex; align-items: center; justify-content: space-between; }
         .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
         .switch input { display: none; }
@@ -109,8 +114,10 @@
         .map-container, .chart-container { background-color: var(--weiss); padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         .content-panel h3 { color: var(--dunkelblau); margin-top: 0; }
         #map { width: 100%; height: 350px; border-radius: 4px; border: 1px solid #ddd; }
+        #chart-title { color: var(--dunkelblau); margin-top: 0; }
 
-        /* --- NEUER RECHTECKIGER FOOTER --- */
+
+        /* --- FOOTER --- */
         footer {
             background-color: var(--dunkelblau);
             color: var(--weiss);
@@ -149,7 +156,7 @@
                 <label for="gewaesser">Gewässer auswählen</label>
                 <select id="gewaesser" name="gewaesser">
                     <option value="filzteich">Filzteich</option>
-                    <option value="cospuden">Cospudener See</option>
+                    <option value="cospuden">Cospudener See</n>
                     <option value="muldenberg">Talsperre Muldenberg</option>
                 </select>
             </div>
@@ -162,22 +169,32 @@
             <div class="filter-group">
                 <label>Parameter</label>
                 <div class="parameter-checkboxes">
-                    <label><input type="checkbox" name="parameter" value="ph" checked> pH-Wert</label>
-                    <label><input type="checkbox" name="parameter" value="temp"> Temperatur</label>
-                    <label><input type="checkbox" name="parameter" value="sauerstoff" checked> Sauerstoffgehalt</label>
-                    <label><input type="checkbox" name="parameter" value="phosphat"> Phosphatkonzentration</label>
+                    <label><input type="checkbox" name="parameter" value="ph" data-text="pH-Wert"> pH-Wert</label>
+                    <label><input type="checkbox" name="parameter" value="temp" data-text="Temperatur (°C)"> Temperatur</label>
+                    <label><input type="checkbox" name="parameter" value="sauerstoff" data-text="Sauerstoff (mg/L)" checked> Sauerstoffgehalt</label>
+                    <label><input type="checkbox" name="parameter" value="phosphat" data-text="Phosphat (mg/L)" checked> Phosphatkonzentration</label>
+                    <label><input type="checkbox" name="parameter" value="nitrat" data-text="Nitrat (mg/L)"> Nitratkonzentration</label>
+                    <label><input type="checkbox" name="parameter" value="chlorophyll_a" data-text="Chlorophyll-a (µg/L)"> Chlorophyll-a</label>
+                    <label><input type="checkbox" name="parameter" value="leitfaehigkeit" data-text="Leitfähigkeit (µS/cm)"> Leitfähigkeit</label>
                 </div>
             </div>
             
             <div class="filter-group">
                 <label for="tiefe">Wassertiefe (in m)</label>
-                 <input type="range" id="tiefe" name="tiefe" min="0" max="50" value="10" style="width: 100%;">
+                <div class="depth-slider-container">
+                    <input type="range" id="tiefe" name="tiefe" min="0" max="50" value="10" style="width: 100%;">
+                    <div class="slider-labels">
+                        <span id="min-depth">0 m</span>
+                        <span id="max-depth">50 m</span>
+                    </div>
+                    <div id="current-depth-value">10 m</div>
+                </div>
             </div>
             
             <div class="filter-group toggle-switch">
-                <label>Messfahrten anzeigen</label>
+                <label>Messfahrt-Route anzeigen</label>
                 <label class="switch">
-                    <input type="checkbox" checked>
+                    <input type="checkbox" id="toggle-route">
                     <span class="slider"></span>
                 </label>
             </div>
@@ -193,13 +210,14 @@
                 <div id="map"></div>
             </div>
             <div class="chart-container">
-                <h3>Zeitreihenanalyse: Phosphatkonzentration (mg/L)</h3>
+                <h3 id="chart-title">Zeitreihenanalyse</h3>
                 <canvas id="dataChart"></canvas>
             </div>
         </section>
     </main>
 
     <footer>
+        <!-- Original Footer -->
         <div class="footer-content">
             <div class="footer-column">
                 <h4>ROBIMO Projekt</h4>
@@ -227,18 +245,23 @@
     </div>
 
     <script>
-        // --- PROTOTYPE INTERAKTIVITÄT ---
-        document.getElementById('apply-filters').addEventListener('click', () => alert('Filter werden angewendet...'));
-        document.getElementById('export-data').addEventListener('click', () => alert('Datenexport als CSV wird gestartet...'));
+        // --- DOM ELEMENTE ---
+        const applyFiltersBtn = document.getElementById('apply-filters');
+        const exportDataBtn = document.getElementById('export-data');
+        const mapTitle = document.getElementById('map-title');
+        const chartTitle = document.getElementById('chart-title');
+        const gewaesserSelect = document.getElementById('gewaesser');
+        const depthSlider = document.getElementById('tiefe');
+        const currentDepthValue = document.getElementById('current-depth-value');
+        const minDepthLabel = document.getElementById('min-depth');
+        const maxDepthLabel = document.getElementById('max-depth');
+        const routeToggle = document.getElementById('toggle-route');
 
         // --- LEAFLET.JS KARTEN-SETUP ---
-        const mapTitle = document.getElementById('map-title');
-        const gewaesserSelect = document.getElementById('gewaesser');
-
         const locations = {
-            filzteich: { name: "Filzteich", coords: [50.57383, 12.60847], zoom: 15 },
-            cospuden: { name: "Cospudener See", coords: [51.2820, 12.3380], zoom: 14 },
-            muldenberg: { name: "Talsperre Muldenberg", coords: [50.41127, 12.40227], zoom: 14 }
+            filzteich: { name: "Filzteich", coords: [50.57383, 12.60847], zoom: 15, maxDepth: 3.8, route: [[50.57383, 12.60847], [50.57333, 12.60747], [50.57283, 12.60847], [50.57333, 12.60947], [50.57383, 12.60847]] },
+            cospuden: { name: "Cospudener See", coords: [51.2820, 12.3380], zoom: 14, maxDepth: 54, route: [[51.2820, 12.3380], [51.2800, 12.3350], [51.2780, 12.3380], [51.2800, 12.3410], [51.2820, 12.3380]] },
+            muldenberg: { name: "Talsperre Muldenberg", coords: [50.41127, 12.40227], zoom: 14, maxDepth: 20, route: [[50.41127, 12.40227], [50.41027, 12.40027], [50.40927, 12.40227], [50.41027, 12.40427], [50.41127, 12.40227]] }
         };
 
         const map = L.map('map').setView(locations.filzteich.coords, locations.filzteich.zoom);
@@ -248,6 +271,21 @@
         }).addTo(map);
         
         let marker = L.marker(locations.filzteich.coords).addTo(map);
+        let routeLine = null;
+
+        function updateDepthSlider() {
+            const selectedValue = gewaesserSelect.value;
+            const location = locations[selectedValue];
+            const maxDepth = location.maxDepth;
+
+            depthSlider.max = maxDepth;
+            depthSlider.step = 0.1;
+            const newValue = (depthSlider.value > maxDepth) ? maxDepth : depthSlider.value;
+            depthSlider.value = newValue;
+            
+            maxDepthLabel.textContent = `${maxDepth.toFixed(1)} m`;
+            currentDepthValue.textContent = `${parseFloat(newValue).toFixed(1)} m`;
+        }
 
         function updateMap() {
             const selectedValue = gewaesserSelect.value;
@@ -255,30 +293,192 @@
             mapTitle.textContent = `Kartenansicht: ${location.name}`;
             map.flyTo(location.coords, location.zoom);
             marker.setLatLng(location.coords).bindPopup(`Messstation ${location.name}`).openPopup();
+            updateRoute();
+            updateDepthSlider();
         }
+
+        function updateRoute() {
+            if (routeLine) {
+                map.removeLayer(routeLine);
+            }
+            if (routeToggle.checked) {
+                const selectedValue = gewaesserSelect.value;
+                const location = locations[selectedValue];
+                routeLine = L.polyline(location.route, { color: 'var(--material-turkis)', weight: 3 }).addTo(map);
+            }
+        }
+        
         gewaesserSelect.addEventListener('change', updateMap);
-        updateMap();
+        routeToggle.addEventListener('change', updateRoute);
 
         // --- CHART.JS DIAGRAMM SETUP ---
         const ctx = document.getElementById('dataChart').getContext('2d');
-        const uniblau = 'rgba(0, 105, 180, 1)';
-        const uniblau_transp = 'rgba(0, 105, 180, 0.2)';
-        new Chart(ctx, {
+        const chartColors = {
+            ph: 'rgba(255, 99, 132, 1)',
+            temp: 'rgba(255, 159, 64, 1)',
+            sauerstoff: 'rgba(54, 162, 235, 1)',
+            phosphat: 'rgba(75, 192, 192, 1)',
+            nitrat: 'rgba(153, 102, 255, 1)',
+            chlorophyll_a: 'rgba(46, 204, 113, 1)',
+            leitfaehigkeit: 'rgba(241, 196, 15, 1)'
+        };
+        const chartColorsTransparent = {
+            ph: 'rgba(255, 99, 132, 0.2)',
+            temp: 'rgba(255, 159, 64, 0.2)',
+            sauerstoff: 'rgba(54, 162, 235, 0.2)',
+            phosphat: 'rgba(75, 192, 192, 0.2)',
+            nitrat: 'rgba(153, 102, 255, 0.2)',
+            chlorophyll_a: 'rgba(46, 204, 113, 0.2)',
+            leitfaehigkeit: 'rgba(241, 196, 15, 0.2)'
+        };
+
+        const dataChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['Jan 23', 'Apr 23', 'Jul 23', 'Okt 23', 'Jan 24', 'Apr 24', 'Jul 24', 'Okt 24'],
-                datasets: [{
-                    label: 'Phosphat in 5m Tiefe (mg/L)',
-                    data: [0.02, 0.03, 0.08, 0.05, 0.02, 0.04, 0.11, 0.06],
-                    backgroundColor: uniblau_transp,
-                    borderColor: uniblau,
+                labels: [],
+                datasets: []
+            },
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: { position: 'top' },
+                },
+                scales: { y: { beginAtZero: false } }
+            }
+        });
+
+        // --- DATEN- & INTERAKTIVITÄTS-LOGIK ---
+        const MOCK_DATA = {
+            base: { ph: 7.5, temp: 15, sauerstoff: 8, phosphat: 0.05, nitrat: 5, chlorophyll_a: 10, leitfaehigkeit: 300 },
+            factors: {
+                seasonal: { 
+                    ph: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.4, 0.2, 0, -0.1, -0.2, -0.2],
+                    temp: [-10, -8, -4, 0, 5, 8, 10, 9, 5, 0, -5, -8],
+                    sauerstoff: [2, 1, 0, -1, -2, -3, -4, -3, -1, 0, 1, 2],
+                    phosphat: [0, 0.01, 0.02, 0.05, 0.08, 0.1, 0.09, 0.06, 0.04, 0.02, 0.01, 0],
+                    nitrat: [0, 0.5, 1, 1.5, 2, 1, 0.5, 0, -1, -1.5, -1, -0.5],
+                    chlorophyll_a: [0, 2, 5, 10, 15, 25, 18, 12, 8, 4, 2, 0],
+                    leitfaehigkeit: [10, 5, 0, -5, -10, -15, -20, -15, -10, 0, 5, 10]
+                },
+                depth: { ph: -0.05, temp: -0.5, sauerstoff: -0.15, phosphat: 0.005, nitrat: -0.1, chlorophyll_a: -0.8, leitfaehigkeit: 2 }
+            }
+        };
+
+        function generateData(parameter, depth, startDate, endDate) {
+            let data = [];
+            let currentDate = new Date(startDate);
+            while (currentDate <= endDate) {
+                const month = currentDate.getMonth();
+                const baseValue = MOCK_DATA.base[parameter];
+                const seasonalEffect = MOCK_DATA.factors.seasonal[parameter][month];
+                const depthEffect = MOCK_DATA.factors.depth[parameter] * depth;
+                const noise = (Math.random() - 0.5) * (baseValue / 20);
+                let finalValue = baseValue + seasonalEffect + depthEffect + noise;
+                if (finalValue < 0) finalValue = 0;
+                data.push(finalValue.toFixed(2));
+                currentDate.setMonth(currentDate.getMonth() + 1);
+            }
+            return data;
+        }
+        
+        function generateLabels(startDate, endDate) {
+            let labels = [];
+            let currentDate = new Date(startDate);
+            const monthFormatter = new Intl.DateTimeFormat('de-DE', { month: 'short' });
+            while (currentDate <= endDate) {
+                labels.push(`${monthFormatter.format(currentDate)} ${currentDate.getFullYear().toString().slice(-2)}`);
+                currentDate.setMonth(currentDate.getMonth() + 1);
+            }
+            return labels;
+        }
+
+        function updateChart() {
+            const depth = depthSlider.value;
+            const startDate = new Date(document.getElementById('start-date').value);
+            const endDate = new Date(document.getElementById('end-date').value);
+            
+            const selectedCheckboxes = document.querySelectorAll('.parameter-checkboxes input:checked');
+            if (selectedCheckboxes.length === 0) {
+                dataChart.data.labels = [];
+                dataChart.data.datasets = [];
+                dataChart.update();
+                chartTitle.textContent = "Zeitreihenanalyse (Bitte Parameter wählen)";
+                return;
+            }
+
+            const newDatasets = [];
+            const selectedParamNames = [];
+
+            selectedCheckboxes.forEach(checkbox => {
+                const param = checkbox.value;
+                const paramText = checkbox.dataset.text;
+                selectedParamNames.push(paramText.split(' ')[0]);
+
+                newDatasets.push({
+                    label: `${paramText} in ${parseFloat(depth).toFixed(1)}m Tiefe`,
+                    data: generateData(param, depth, startDate, endDate),
+                    borderColor: chartColors[param],
+                    backgroundColor: chartColorsTransparent[param],
                     borderWidth: 2,
                     fill: true,
                     tension: 0.2
-                }]
-            },
-            options: { responsive: true, maintainAspectRatio: true }
+                });
+            });
+            
+            dataChart.data.labels = generateLabels(startDate, endDate);
+            dataChart.data.datasets = newDatasets;
+            dataChart.update();
+
+            chartTitle.textContent = `Zeitreihenanalyse: ${selectedParamNames.join(', ')}`;
+        }
+
+        function exportChartDataToCSV() {
+            const { labels, datasets } = dataChart.data;
+            if (datasets.length === 0) {
+                alert("Keine Daten zum Exportieren vorhanden. Bitte wenden Sie zuerst Filter an.");
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,";
+            // Header-Zeile
+            const headers = ["Zeitstempel", ...datasets.map(d => d.label)];
+            csvContent += headers.join(",") + "\r\n";
+
+            // Daten-Zeilen
+            labels.forEach((label, index) => {
+                const row = [label, ...datasets.map(d => d.data[index])];
+                csvContent += row.join(",") + "\r\n";
+            });
+
+            // Download-Logik
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "robimo_datenexport.csv");
+            document.body.appendChild(link); 
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // --- EVENT LISTENERS ---
+        applyFiltersBtn.addEventListener('click', updateChart);
+        exportDataBtn.addEventListener('click', exportChartDataToCSV);
+
+        depthSlider.addEventListener('input', () => {
+            currentDepthValue.textContent = `${parseFloat(depthSlider.value).toFixed(1)} m`;
         });
+
+        // Initialisierungsfunktion
+        function initialize() {
+            minDepthLabel.textContent = `${depthSlider.min} m`;
+            updateMap();
+            updateChart();
+        }
+
+        // App starten
+        initialize();
+
     </script>
 </body>
 </html>
