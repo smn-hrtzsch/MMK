@@ -1,0 +1,87 @@
+Persona: Lisa Neumann – Die engagierte Masterstudentin
+
+(Für deine Präsentation: Bitte denke daran zu vermerken, dass diese Persona KI-generiert ist.)
+
+Bild: (Hier könntest du ein passendes Bild einfügen, z.B. eine junge Frau Mitte 20, die an einem Laptop arbeitet, vielleicht mit Notizen oder Fachbüchern im Hintergrund, die auf Umweltwissenschaften oder Geowissenschaften hindeuten. Das Bild könntest du separat generieren lassen.)
+
+Allgemeine Informationen:
+
+
+
+Name: Lisa Neumann
+
+Alter: 25 Jahre
+
+Beruf/Status: Masterstudentin im 3. Semester Hydrogeologie an der TU Bergakademie Freiberg.
+
+Wohnort: Freiberg
+
+Technik: Nutzt täglich ihr MacBook Air 15'' (M2) für Recherche, Datenverarbeitung und das Verfassen von Arbeiten. Ist technisch versiert und offen für neue digitale Werkzeuge.
+
+Hintergrund & Kontext:
+
+Lisa steht kurz vor dem Beginn ihrer Masterarbeit. Ihr Thema soll sich mit der Wasserqualität und den ökologischen Veränderungen in einem sächsischen Tagebaurestsee beschäftigen. Sie ist sehr motiviert, reale Messdaten für ihre Forschung zu nutzen, um praxisnahe Ergebnisse zu erzielen. Die autonomen Forschungsboote (ROBIMO) und deren Daten sind für sie eine potenziell sehr wertvolle Ressource.
+
+Ziele (im Kontext der Anwendung):
+
+
+
+Aktuelle und historische Messdaten (z.B. pH-Wert, Sauerstoffgehalt, Temperatur, Nährstoffkonzentrationen) für spezifische Tagebaurestseen oder Talsperren schnell und unkompliziert finden.
+
+Die zeitliche und räumliche Entwicklung der Wasserqualität an verschiedenen Messpunkten und in unterschiedlichen Wassertiefen nachvollziehen.
+
+Daten für ihre Masterarbeit visualisieren und exportieren können (z.B. für statistische Analysen mit R oder zur Grafikerstellung).
+
+Die Funktionsweise und das Potenzial moderner Monitoring-Systeme (wie ROBIMO) verstehen.
+
+Einen guten Überblick über die Pfade der letzten Messfahrten erhalten, um die Abdeckung und mögliche Einflussfaktoren besser einschätzen zu können.
+
+Bedürfnisse an die Anwendung:
+
+
+
+Intuitive Bedienung: Eine klare, selbsterklärende Benutzeroberfläche, die ohne lange Einarbeitungszeit nutzbar ist.
+
+Verständliche Visualisierungen: Aussagekräftige grafische Darstellungen (Zeitreihendiagramme, Kartenansichten mit Datenlayern, ggf. animierte Verläufe).
+
+Effektive Filter- und Suchfunktionen: Möglichkeit, Daten nach Gewässer, Messpunkt, Zeitraum, Parameter und Wassertiefe zu filtern.
+
+Datenexport: Einfacher Export der ausgewählten Daten in gängigen Formaten (z.B. CSV, Excel).
+
+Metadaten: Informationen zu den Messmethoden, Einheiten und der Genauigkeit der Daten.
+
+Zuverlässigkeit: Stabile Performance auch bei größeren Datensätzen.
+
+Tutorials/Hilfestellungen: Eventuell kurze Anleitungen oder Tooltips für komplexere Funktionen.
+
+Frustrationen (bei der Datensuche & -analyse allgemein):
+
+
+
+Daten sind oft schwer auffindbar, veraltet oder in inkonsistenten Formaten gespeichert.
+
+Komplexe Fachsoftware, die eine lange Einarbeitungszeit erfordert.
+
+Unübersichtliche Darstellung von Rohdaten ohne gute Visualisierungstools.
+
+Fehlende Dokumentation oder unklare Herkunft der Daten.
+
+Systeme, die nicht gut auf ihrem MacBook laufen.
+
+Technikaffinität:
+
+
+
+Hoch. Als "Digital Native" ist sie den Umgang mit Webanwendungen und Software gewohnt.
+
+Nutzt regelmäßig Software für Datenanalyse (Excel, erste Erfahrungen mit R).
+
+Erwartet ein modernes User Interface und eine gute User Experience.
+
+Ein typisches Zitat:
+
+"Für meine Masterarbeit brauche ich eine Anwendung, mit der ich schnell auf zuverlässige Messdaten zugreifen, sie visualisieren und für meine Analysen exportieren kann. Am besten wäre es, wenn ich direkt sehen könnte, wo und wann die Boote gemessen haben."
+
+Mögliches Nutzungsszenario:
+
+Lisa möchte die Entwicklung der Phosphatkonzentration im "Filzteich" (Beispiel für eine Talsperre/Gewässer) über die letzten zwei Jahre für ihre Projektstudie untersuchen. Sie öffnet die Webanwendung auf ihrem MacBook Air. Über die Kartenfunktion wählt sie den Filzteich und die relevanten Messpunkte aus. Sie filtert die Daten nach dem Parameter "Phosphat", dem gewünschten Zeitraum und stellt die Werte für verschiedene Tiefen als Liniendiagramm dar. Sie bemerkt einen interessanten Anstieg im letzten Sommer und beschließt, diese Daten für eine genauere Analyse als CSV-Datei zu exportieren. Zusätzlich blendet sie die Pfade der letzten Messfahrten ein, um zu prüfen, ob die Messpunkte repräsentativ sind.
