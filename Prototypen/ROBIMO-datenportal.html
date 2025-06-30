@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROBIMO Datenportal - TUBAF Prototyp v5</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* --- GRUNDEINSTELLUNGEN & FARBVARIABLEN (gemäß TUBAF Styleguide) --- */
+        :root {
+            --uniblau: #0069b4;
+            --dunkelblau: #00497f;
+            --material-turkis: #007b99;
+            --material-invert: #bee2e9;
+            --schwarz: #333333;
+            --grau: #565656;
+            --hellgrau: #f4f4f4;
+            --weiss: #ffffff;
+        }
+
+        @font-face {
+            font-family: 'Futura';
+            src: local('Futura'), local('Futura-Medium');
+        }
+
+        body {
+            font-family: 'Futura', 'Arial', sans-serif;
+            margin: 0;
+            background-color: var(--hellgrau);
+            color: var(--schwarz);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+        /* --- HEADER BEREICH --- */
+        header {
+            background-color: var(--weiss);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--uniblau);
+        }
+
+        .logo-container img {
+            height: 50px;
+            border-radius: 4px;
+        }
+
+        header h1 {
+            color: var(--dunkelblau);
+            font-weight: 500;
+            font-size: 1.8em;
+            margin: 0;
+        }
+
+        /* --- HAUPTBEREICH (GRID LAYOUT) --- */
+        .main-container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* --- FILTER & STEUERUNG (LINKE SEITE) --- */
+        .filter-panel {
+            background-color: var(--weiss);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            align-self: start;
+        }
+
+        .filter-panel h2 { color: var(--dunkelblau); font-size: 1.4em; margin-top: 0; border-bottom: 2px solid var(--hellgrau); padding-bottom: 10px; }
+        .filter-group { margin-bottom: 25px; }
+        .filter-group label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--grau); }
+        .filter-group select, .filter-group input[type="date"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Arial', sans-serif; }
+        
+        /* CSS für die wiederhergestellten Filter */
+        .parameter-checkboxes label { display: flex; align-items: center; margin-bottom: 8px; font-weight: normal; }
+        .parameter-checkboxes input { margin-right: 10px; accent-color: var(--uniblau); }
+        .toggle-switch { display: flex; align-items: center; justify-content: space-between; }
+        .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
+        .switch input { display: none; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 28px; }
+        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--uniblau); }
+        input:checked + .slider:before { transform: translateX(22px); }
+
+        /* --- BUTTONS --- */
+        .action-buttons button { width: 100%; padding: 12px; border: none; border-radius: 4px; color: var(--weiss); font-size: 1em; font-weight: bold; cursor: pointer; transition: background-color 0.3s; margin-top: 10px; }
+        #apply-filters { background-color: var(--uniblau); }
+        #apply-filters:hover { background-color: var(--dunkelblau); }
+        #export-data { background-color: var(--material-turkis); }
+        #export-data:hover { background-color: #005f79; }
+
+        /* --- VISUALISIERUNGSBEREICH (RECHTE SEITE) --- */
+        .content-panel { display: flex; flex-direction: column; gap: 20px; }
+        .map-container, .chart-container { background-color: var(--weiss); padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .content-panel h3 { color: var(--dunkelblau); margin-top: 0; }
+        #map { width: 100%; height: 350px; border-radius: 4px; border: 1px solid #ddd; }
+
+        /* --- NEUER RECHTECKIGER FOOTER --- */
+        footer {
+            background-color: var(--dunkelblau);
+            color: var(--weiss);
+            padding: 40px 30px;
+            margin-top: auto;
+        }
+        
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .footer-column { flex: 1; min-width: 220px; }
+        .footer-column h4 { color: var(--material-invert); margin-top: 0; margin-bottom: 15px; font-weight: bold; border-bottom: 1px solid var(--uniblau); padding-bottom: 10px; }
+        .footer-column p, .footer-column a { font-size: 0.9em; color: var(--weiss); text-decoration: none; line-height: 1.8; display: block; }
+        .footer-column a:hover { color: var(--material-invert); text-decoration: underline; }
+        .footer-bottom { background-color: var(--uniblau); padding: 15px 30px; text-align: center; font-size: 0.8em; color: var(--weiss); }
+        
+        /* --- RESPONSIVE ANPASSUNG --- */
+        @media (max-width: 900px) {
+            .main-container { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 15px; text-align: center; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7WdoFeVNwbxNN0acQYJY94I0vA95-EY4Qtw&s" alt="Logo TU Bergakademie Freiberg">
+        </div>
+        <h1>ROBIMO Datenportal</h1>
+    </header>
+
+    <main class="main-container">
+        <aside class="filter-panel">
+            <h2>Filter &amp; Optionen</h2>
+            <div class="filter-group">
+                <label for="gewaesser">Gewässer auswählen</label>
+                <select id="gewaesser" name="gewaesser">
+                    <option value="filzteich">Filzteich</option>
+                    <option value="cospuden">Cospudener See</option>
+                    <option value="muldenberg">Talsperre Muldenberg</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Zeitraum</label>
+                <input type="date" id="start-date" name="start-date" value="2023-01-01">
+                <input type="date" id="end-date" name="end-date" value="2024-12-31" style="margin-top: 8px;">
+            </div>
+
+            <div class="filter-group">
+                <label>Parameter</label>
+                <div class="parameter-checkboxes">
+                    <label><input type="checkbox" name="parameter" value="ph" checked> pH-Wert</label>
+                    <label><input type="checkbox" name="parameter" value="temp"> Temperatur</label>
+                    <label><input type="checkbox" name="parameter" value="sauerstoff" checked> Sauerstoffgehalt</label>
+                    <label><input type="checkbox" name="parameter" value="phosphat"> Phosphatkonzentration</label>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <label for="tiefe">Wassertiefe (in m)</label>
+                 <input type="range" id="tiefe" name="tiefe" min="0" max="50" value="10" style="width: 100%;">
+            </div>
+            
+            <div class="filter-group toggle-switch">
+                <label>Messfahrten anzeigen</label>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="action-buttons">
+                <button id="apply-filters">Filter anwenden</button>
+                <button id="export-data">Daten exportieren (CSV)</button>
+            </div>
+        </aside>
+
+        <section class="content-panel">
+            <div class="map-container">
+                <h3 id="map-title">Kartenansicht</h3>
+                <div id="map"></div>
+            </div>
+            <div class="chart-container">
+                <h3>Zeitreihenanalyse: Phosphatkonzentration (mg/L)</h3>
+                <canvas id="dataChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>ROBIMO Projekt</h4>
+                <p>Institut für Geologie</p>
+                <p>TU Bergakademie Freiberg</p>
+                <p>Bernhard-von-Cotta-Straße 2</p>
+                <p>09599 Freiberg</p>
+            </div>
+            <div class="footer-column">
+                <h4>Kontakt</h4>
+                <p>Ansprechpartner: Prof. Dr. Mustermann</p>
+                <a href="mailto:sekretariat@geo.tu-freiberg.de">sekretariat@geo.tu-freiberg.de</a>
+                <a href="tel:+493731392358">+49 3731 39-2358</a>
+            </div>
+            <div class="footer-column">
+                <h4>Rechtliches &amp; Links</h4>
+                <a href="https://tu-freiberg.de/impressum" target="_blank">Impressum</a>
+                <a href="https://tu-freiberg.de/datenschutz" target="_blank">Datenschutzerklärung</a>
+                <a href="https://tu-freiberg.de/geo" target="_blank">Webseite des Instituts</a>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        © 2025 TU Bergakademie Freiberg | Die Nutzer-Persona "Lisa Neumann" für diese Anwendung ist KI-generiert.
+    </div>
+
+    <script>
+        // --- PROTOTYPE INTERAKTIVITÄT ---
+        document.getElementById('apply-filters').addEventListener('click', () => alert('Filter werden angewendet...'));
+        document.getElementById('export-data').addEventListener('click', () => alert('Datenexport als CSV wird gestartet...'));
+
+        // --- LEAFLET.JS KARTEN-SETUP ---
+        const mapTitle = document.getElementById('map-title');
+        const gewaesserSelect = document.getElementById('gewaesser');
+
+        const locations = {
+            filzteich: { name: "Filzteich", coords: [50.57383, 12.60847], zoom: 15 },
+            cospuden: { name: "Cospudener See", coords: [51.2820, 12.3380], zoom: 14 },
+            muldenberg: { name: "Talsperre Muldenberg", coords: [50.41127, 12.40227], zoom: 14 }
+        };
+
+        const map = L.map('map').setView(locations.filzteich.coords, locations.filzteich.zoom);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        
+        let marker = L.marker(locations.filzteich.coords).addTo(map);
+
+        function updateMap() {
+            const selectedValue = gewaesserSelect.value;
+            const location = locations[selectedValue];
+            mapTitle.textContent = `Kartenansicht: ${location.name}`;
+            map.flyTo(location.coords, location.zoom);
+            marker.setLatLng(location.coords).bindPopup(`Messstation ${location.name}`).openPopup();
+        }
+        gewaesserSelect.addEventListener('change', updateMap);
+        updateMap();
+
+        // --- CHART.JS DIAGRAMM SETUP ---
+        const ctx = document.getElementById('dataChart').getContext('2d');
+        const uniblau = 'rgba(0, 105, 180, 1)';
+        const uniblau_transp = 'rgba(0, 105, 180, 0.2)';
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan 23', 'Apr 23', 'Jul 23', 'Okt 23', 'Jan 24', 'Apr 24', 'Jul 24', 'Okt 24'],
+                datasets: [{
+                    label: 'Phosphat in 5m Tiefe (mg/L)',
+                    data: [0.02, 0.03, 0.08, 0.05, 0.02, 0.04, 0.11, 0.06],
+                    backgroundColor: uniblau_transp,
+                    borderColor: uniblau,
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.2
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: true }
+        });
+    </script>
+</body>
+</html>
